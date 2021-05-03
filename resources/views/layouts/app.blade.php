@@ -16,6 +16,10 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @livewireStyles
@@ -53,6 +57,11 @@
                                 </li>
                             @endif
                         @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('video.create', ['channel' => Auth::user()->channel]) }}">
+                                    <span class="material-icons">video_call</span>
+                                </a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -60,7 +69,9 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('channel.edit', ['channel' => Auth::user()->channel]) }}">
-                                        {{ Auth::user()->channel->name }}
+                                        @if(Auth::user()->channel()->exists())
+                                            {{ Auth::user()->channel->name }}
+                                        @endif
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -85,5 +96,6 @@
         </main>
     </div>
     @livewireScripts
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </body>
 </html>

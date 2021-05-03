@@ -1,4 +1,7 @@
 <div>
+    @if($channel->image)
+        <img src="{{ asset('images' . '/' . $channel->image)}}" alt="">
+    @endif
     <form wire:submit.prevent="update">
         @if(session()->has('message'))
             <div class="alert alert-success">
@@ -28,7 +31,7 @@
         @enderror
 
         <div class="form-group">
-            <label for="slug">Channel Description</label>
+            <label for="description">Channel Description</label>
             <textarea wire:model="channel.description"  id="description" cols="6" rows="6" class="form-control"></textarea>
         </div>
         @error('channel.description')

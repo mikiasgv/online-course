@@ -26,6 +26,7 @@ class CreateVideosTable extends Migration
             $table->boolean('allow_likes')->default(false);
             $table->boolean('allow_comments')->default(false);
             $table->string('processing_percentage')->nullable();
+            $table->string('thumbnail_image')->nullable();
 
             $table->foreign('channel_id')->references('id')->on('channels')->onDelete('cascade');
             $table->timestamps();

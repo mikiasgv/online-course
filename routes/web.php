@@ -4,6 +4,7 @@ use App\Http\Controllers\ChannelController;
 use App\Http\Livewire\Video\AllVideo;
 use App\Http\Livewire\Video\CreateVideo;
 use App\Http\Livewire\Video\EditVideo;
+use App\Http\Livewire\Video\WatchVideo;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,4 +33,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/videos/{channel:slug}/create', CreateVideo::class)->name('video.create');
     Route::get('/videos/{channel:slug}/{video:uid}/edit', EditVideo::class)->name('video.edit');
     Route::get('/videos/{channel:slug}', AllVideo::class)->name('video.all');
+
 });
+
+Route::get('/watch/{video}', WatchVideo::class)->name('video.watch');

@@ -11,6 +11,11 @@ class Video extends Model
 
     protected $guarded = [];
 
+    public function getThumbnailAttribute()
+    {
+        return $this->thumbnail_image ? '/videos/' . $this->uid . '/' . $this->thumbnail_image : '/videos/' . 'default.png';
+    }
+
     public function channel()
     {
         return $this->belongsTo(Channel::class);

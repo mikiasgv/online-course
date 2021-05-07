@@ -1,8 +1,20 @@
+<div @if($video->processing_percentage < 100)
+    wire:poll
+@endif>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
+
+                    <div class="mb-3">
+                        <img src="{{asset($this->video->thumbnail)}}" alt="" class="img-thumbnail">
+                    </div>
+
+                    <div class="mb-3">
+                        <p>Proccessing ({{$this->video->processing_percentage}})</p>
+                    </div>
+
                     <form wire:submit.prevent="update">
                         @if(session()->has('message'))
                             <div class="alert alert-success">
@@ -53,4 +65,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>
